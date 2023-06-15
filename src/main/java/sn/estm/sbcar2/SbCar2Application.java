@@ -13,8 +13,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import sn.estm.sbcar2.domain.Car;
 import sn.estm.sbcar2.domain.Owner;
+import sn.estm.sbcar2.domain.User;
 import sn.estm.sbcar2.repository.CarRepository;
 import sn.estm.sbcar2.repository.OwnerRepository;
+import sn.estm.sbcar2.repository.UserRepository;
 
 @SpringBootApplication
 public class SbCar2Application implements CommandLineRunner {
@@ -23,6 +25,9 @@ public class SbCar2Application implements CommandLineRunner {
 	private CarRepository carRepository;
 	@Autowired
 	private OwnerRepository ownerRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(SbCar2Application.class, args);
 	}
@@ -52,5 +57,7 @@ public class SbCar2Application implements CommandLineRunner {
 		for (Car car : carRepository.findAll()) {
 			logger.info(car.getBrand() + " " + car.getModel());
 		}
+		userRepository.save(new User("user", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "USER"));
+		userRepository.save(new User("admin", "$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", "ADMIN"));
 	}
 }

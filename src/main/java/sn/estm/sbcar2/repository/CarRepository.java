@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 import sn.estm.sbcar2.domain.Car;
 
-@RepositoryRestResource
+@Repository
 public interface CarRepository extends CrudRepository<Car, Long> {
     List<Car> findByBrand(@Param("brand") String brand);
     List<Car> findByColor(@Param("color") String color);
