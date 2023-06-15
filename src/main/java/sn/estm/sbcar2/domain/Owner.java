@@ -15,9 +15,7 @@ public class Owner {
     private String lastname;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "car_owner", joinColumns = {
-            @JoinColumn(name = "car")
-    })
+
     private Set<Car> cars = new HashSet<>();
 
     public  Owner() {}
